@@ -1,13 +1,14 @@
-<h1> Showing selected article </h2>
 
-<p>
-  Title <%= @article.title %>
-</p>
-
-<p>
-  Description: <%= @article.description %>
-</p>
-
-<%= link_to "Edit", edit_article_path(@article) %>  |  
-
-<%= link_to 'View all', articles_path %>
+<div class="card">
+  <div class="card-header">
+    Title: <%= @article.title %>
+  </div>
+  <div class="card-body">
+    Description: <%= @article.description %>
+  </div>
+  <div class="card-footer">
+    <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-sm btn-primary mx-1" %>
+    <%= link_to "Delete this article", article_path(@article), class: "btn btn-sm btn-warning mx-1", method: :delete, data: {confirm: "Are you sure you want to delete the article?"} %>
+    <%= link_to "View all", articles_path, class: "btn btn-sm btn-success mx-1" %>
+  </div>
+</div>

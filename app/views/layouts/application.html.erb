@@ -10,12 +10,21 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-      <ul>
-        <li><%= msg %> </li>
-      </ul>
-    <% end %>
+    <%= render 'layouts/navigation' %>
 
+    <div class="row">
+      <div class="col-10 offset-1">
+        <% flash.each do |name, msg| %>
+          <div class='alert alert-<%="#{name}"%>'>
+            <a href="#" class="close" data-dismiss="alert">&#215;</a>
+            <%= content_tag :div, msg, :id => "flash_#{a=name}" if  msg.is_a?(String) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  <div class="container mt-2">
     <%= yield %>
+  </div>
   </body>
 </html>
